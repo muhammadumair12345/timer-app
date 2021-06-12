@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+    - node_modules
+script:
+  - npm test
+  - npm run build
+deploy:
+  provider: surge
+  cleanup: false
+  project: ./build/
+  domain: umair-timer-app.surge.sh
+on:
+  branch: master
