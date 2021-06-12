@@ -6,7 +6,7 @@ const TimerApp = () => {
   return (
     <div>
       <GlobalStyle/>
-      Timer App Fast
+      Timer App with Love
     </div>
   )
 }
