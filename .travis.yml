@@ -9,7 +9,7 @@ script:
   - npm run build
 deploy:
   provider: surge
-  cleanup: false
+  skip_cleanup: true
   project: ./build/
   domain: umair-timer-app.surge.sh
 on:
