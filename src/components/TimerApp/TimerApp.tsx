@@ -1,13 +1,14 @@
 import React from 'react';
+import TimerContainer from '../TimerContainer/TimerContainer';
 import { GlobalStyle } from './TimerApp.style';
 
 
 const TimerApp = () => {
   return (
-    <div>
+    <>
       <GlobalStyle/>
-      Timer App with Love
-    </div>
+      <TimerContainer/>
+    </>
   )
 }
 

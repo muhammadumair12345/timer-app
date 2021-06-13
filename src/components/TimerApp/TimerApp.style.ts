@@ -1,4 +1,5 @@
 import {createGlobalStyle} from 'styled-components';
+import BGTimerImage from '../../images/bg-timer.jpg';
 
 export const GlobalStyle = createGlobalStyle`
     *{
@@ -8,6 +9,11 @@ export const GlobalStyle = createGlobalStyle`
     }
     body{
         height: 100vh;
+        background-color: #ffa600;
+        background-image: url(${BGTimerImage});
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
         display: flex;
         justify-content: center;
         align-items: center;
