@@ -1,10 +1,15 @@
 import React from 'react';
-import {Container} from './TimerContainer.style'
+import TimerActions from '../TimerActions/TimerActions';
+import TimerClock from '../TimerClock/TimerClock';
+import TimerHeader from '../TimerHeader/TimerHeader';
+import {Container} from './TimerContainer.style';
 
 const TimerContainer = () => {
     return (
         <Container>
-            I love Timer
+            <TimerHeader/>
+            <TimerClock/>
+            <TimerActions/>
         </Container>
     )
 }
