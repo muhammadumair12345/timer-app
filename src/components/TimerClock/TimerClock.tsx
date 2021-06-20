@@ -1,22 +1,53 @@
- import React,{useState,useEffect} from 'react'
-import { Timer } from './TimerClock.style'
+import React,{useState,useEffect,useContext,useCallback} from 'react';
+import { TimerContext } from '../../context/TimerContext';
+import { Timer } from './TimerClock.style';
 
-interface Clock{
-    hours:number;
-    minutes:number;
-    seconds:number;
-    miliSeconds:number;
-}
+const TimerClock:React.FC = () => {
+    const [hours, setHours] = useState<number>(0);
+    const [minutes, setMinutes] = useState<number>(0);
+    const [seconds, setSeconds] = useState<number>(0);
+    const {startFlag,stopFlag,resetFlag,resumeFlag,
+        setStartFlag,setStopFlag,setResetFlag} = useContext<any>(TimerContext);
 
-const TimerClock = () => {
-    const [timer, setTimer] = useState<Clock>({hours:0,minutes:0,seconds:0,miliSeconds:0});
+    const startTimer=()=>{
+        if(startFlag===true&&resetFlag===false){
+            if(stopFlag===false)
+            if(seconds<60)
+            {
+                setSeconds(prev=>++prev)
+            }
+            else{
+                setSeconds(0);
+                if(minutes<59){
+                    setMinutes(prev=>++prev)
+                }
+                else{
+                    setMinutes(0)
+                    setHours(prev=>++prev)
+                }
+            }
+        }
+        else{
+           setHours(0);
+           setMinutes(0);
+           setSeconds(0); 
+           setResetFlag(false)
+           setStartFlag(false);
+        }
+    }
+
+    useEffect(()=>{
+        let timerInterval:NodeJS.Timeout=setInterval(startTimer,1000)
+        return ()=> {
+            clearInterval(timerInterval);
+        };
+    },[startTimer]);
 
     return (
         <Timer>
-            <div>{timer.hours>=10?timer.hours:"0"+timer.hours}</div>:
-            <div>{timer.minutes>=10?timer.minutes:"0"+timer.minutes}</div>:   
-            <div>{timer.seconds>=10?timer.seconds:"0"+timer.seconds}</div>:   
-            <div>{timer.miliSeconds>=10?timer.miliSeconds:"0"+timer.miliSeconds}</div>
+            <div>{hours>=10?hours:"0"+hours}</div>:
+            <div>{minutes>=10?minutes:"0"+minutes}</div>:   
+            <div>{seconds>=10?seconds:"0"+seconds}</div>  
         </Timer>
     )
 }
