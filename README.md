@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Timer App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![timer](https://user-images.githubusercontent.com/67727132/122673328-50e98b00-d1e9-11eb-97d2-49b44be04a25.png)
 
 ## Available Scripts
 
