@@ -6,10 +6,11 @@ const TimerClock:React.FC = () => {
     const [hours, setHours] = useState<number>(0);
     const [minutes, setMinutes] = useState<number>(0);
     const [seconds, setSeconds] = useState<number>(0);
-    const {startFlag,stopFlag,resetFlag,resumeFlag,
-        setStartFlag,setStopFlag,setResetFlag} = useContext<any>(TimerContext);
+    const {startFlag,stopFlag,resetFlag,
+        setStartFlag,setResetFlag} = useContext<any>(TimerContext);
 
-    const startTimer=()=>{
+    const startTimer=useCallback(()=>{
+        console.log(startFlag)
         if(startFlag===true&&resetFlag===false){
             if(stopFlag===false)
             if(seconds<60)
@@ -34,7 +35,7 @@ const TimerClock:React.FC = () => {
            setResetFlag(false)
            setStartFlag(false);
         }
-    }
+    },[startFlag,stopFlag,resetFlag,setStartFlag,setResetFlag,minutes,seconds]);
 
     useEffect(()=>{
         let timerInterval:NodeJS.Timeout=setInterval(startTimer,1000)
