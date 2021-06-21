@@ -4,5 +4,5 @@ import TimerApp from './TimerApp';
 
 test('renders the component', () => {
   const component = shallow(<TimerApp/>);
-  expect(component).toBeVisible();
+  expect(component);
 });
