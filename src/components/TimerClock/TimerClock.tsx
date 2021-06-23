@@ -10,7 +10,6 @@ const TimerClock:React.FC = () => {
         setStartFlag,setResetFlag} = useContext<any>(TimerContext);
 
     const startTimer=useCallback(()=>{
-        console.log(startFlag)
         if(startFlag===true&&resetFlag===false){
             if(stopFlag===false)
             if(seconds<60)
